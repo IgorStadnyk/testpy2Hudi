@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+    stages {
+        stage('cloning ...') {
+            steps {
+                sh 'python3 http_e.py'
+            }
+        
+                stage('Building ...') {
+            steps {
+                sh 'python3 http_e.py'
+            }
+        
+        }
+        }
+        stage('testing ...') { 
+            steps {
+                sh 'pytest TestRest.py'
+            }
+        }
+   
+    }
+    
+}
+    
+    post{
+        always{
+            echo "========always========"
+        }
+        success{
+            echo "========pipeline executed successfully ========"
+        }
+        failure{
+            echo "========pipeline execution failed========"
+        }
+    }
+}
