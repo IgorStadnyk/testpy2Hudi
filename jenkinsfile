@@ -24,14 +24,10 @@ pipeline {
 }
     
     post{
-        always{
-            echo "========always========"
-        }
+  
         success{
-            echo "========pipeline executed successfully ========"
+            sh 'docker build -t requestsfromjenkins .'
         }
-        failure{
-            echo "========pipeline execution failed========"
-        }
+        
     }
 }
