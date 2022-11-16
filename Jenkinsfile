@@ -20,7 +20,9 @@ pipeline{
     }
 }
     post{
-  
+        agent {
+            docker{image 'docker'}
+        }
         success{
             sh 'docker build -t requestsfromjenkins .'
         }
