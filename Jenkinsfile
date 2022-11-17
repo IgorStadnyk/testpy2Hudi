@@ -1,38 +1,45 @@
+
 pipeline{
-    agent any 
+    agent any
     stages{
         stage("cloning ..."){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/devopsPRO27/requests']]])
-
             }
+            
         }
-        stage("building ..."){
+        stage("building"){
             steps{
                 sh 'python3 http_e.py'
             }
+            
         }
-        stage("testing ..."){
+        stage("testing"){
             steps{
                 sh 'pytest TestRest.py'
             }
+            
         }
-        
-         stage("docker build ..."){
-                     agent {
+
+        stage("docker build ..."){
+            agent {
             docker{image 'docker'}
         }
             steps{
-                sh 'docker build -t requestsfromjenkins .'
+             sh 'docker build -t requestsfromjenkins .'   
             }
-        }
-    }
-}
-    post{
-        success{
-            echo "success"
+            
         }
         
     }
-}
+    post{
   
+        success{
+            echo 'success'
+        }
+    
+    }
+
+   
+}  
+
