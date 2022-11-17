@@ -23,6 +23,7 @@ pipeline{
 
         stage("docker build ..."){
             steps{
+             sh 'apt install docker'   
              sh 'usermod -a -G docker jenkins'  
              sh 'docker build -t requestsfromjenkins .'   
             }
