@@ -26,7 +26,7 @@ pipeline{
             docker{image 'docker'}
         }
             steps{
-             sh 'docker build -t requestsfromjenkins .'   
+             sh 'build -t requestsfromjenkins .'   
             }
             
         }
