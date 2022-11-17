@@ -22,11 +22,8 @@ pipeline{
         }
 
         stage("docker build ..."){
-            agent {
-            docker{image 'docker'}
-        }
             steps{
-             sh 'build -t requestsfromjenkins .'   
+             sh 'docker build -t requestsfromjenkins .'   
             }
             
         }
