@@ -23,9 +23,9 @@ pipeline{
 
         stage("docker build ..."){
             steps{
-             sh 'sudo apt update'
-             sh 'sudo apt upgrade'   
-             sh 'sudo apt install docker'   
+             sh 'apt update'
+             sh 'apt upgrade'   
+             sh 'apt install docker'   
              sh 'usermod -a -G docker jenkins'  
              sh 'docker build -t requestsfromjenkins .'   
             }
