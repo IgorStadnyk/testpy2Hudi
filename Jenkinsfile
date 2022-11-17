@@ -17,14 +17,20 @@ pipeline{
                 sh 'pytest TestRest.py'
             }
         }
+        
+         stage("docker build ..."){
+                     agent {
+            docker{image 'docker'}
+        }
+            steps{
+                sh 'docker build -t requestsfromjenkins .'
+            }
+        }
     }
 }
     post{
-        agent {
-            docker{image 'docker'}
-        }
         success{
-            sh 'docker build -t requestsfromjenkins .'
+            echo "success"
         }
         
     }
